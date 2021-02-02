@@ -2,7 +2,8 @@ black
 Django==2.2.10
 django-cors-headers
 djangorestframework
-drf-yasg==1.17.1
+drf-yasg==1.20
+drf-yasg[validation]
 djoser==2.0
 flake8
 isort

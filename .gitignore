@@ -1,4 +1,6 @@
 __pycache__
 data
-app/.vscode
-app/.pytest_cache
+*vscode
+*pytest_cache
+*mypy_cache
+app/.coverage

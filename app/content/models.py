@@ -1,5 +1,5 @@
-from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
 
 
 class Poll(models.Model):
@@ -17,11 +17,21 @@ class Poll(models.Model):
 
 
 class Question(models.Model):
-    TYPE = (("Ответ текстом", "Ответ текстом"), ("Ответ с выбором одного варианта", "Ответ с выбором одного варианта"),
-            ("Ответ с выбором нескольких варинатов", "Ответ с выбором нескольких варинатов"))
+    TYPE = (
+        ("Ответ текстом", "Ответ текстом"),
+        ("Ответ с выбором одного варианта", "Ответ с выбором одного варианта"),
+        (
+            "Ответ с выбором нескольких варинатов",
+            "Ответ с выбором нескольких варинатов",
+        ),
+    )
     text = models.TextField("Текст вопроса")
-    type_q = models.CharField("Тип вопроса", max_length=36, choices=TYPE, default="Ответ текстом")
-    poll = models.ForeignKey(Poll, on_delete=models.CASCADE, verbose_name="Опрос", related_name="questions")
+    type_q = models.CharField(
+        "Тип вопроса", max_length=36, choices=TYPE, default="Ответ текстом"
+    )
+    poll = models.ForeignKey(
+        Poll, on_delete=models.CASCADE, verbose_name="Опрос", related_name="questions"
+    )
 
     class Meta:
         verbose_name = "Вопрос"
@@ -33,7 +43,12 @@ class Question(models.Model):
 
 class Answer(models.Model):
     variant = models.TextField("Вариант ответа")
-    question = models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name="Вопрос", related_name="answers")
+    question = models.ForeignKey(
+        Question,
+        on_delete=models.CASCADE,
+        verbose_name="Вопрос",
+        related_name="answers",
+    )
 
     class Meta:
         verbose_name = "Ответ"
@@ -44,12 +59,26 @@ class Answer(models.Model):
 
 
 class UserAnswer(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True,
-                             verbose_name="Пользователь", related_name="user")
-    anonymous = models.PositiveIntegerField("ID анонимного пользователя", blank=True, null=True)
-    answer = models.ForeignKey(Answer, on_delete=models.CASCADE, verbose_name="Ответ",
-                               related_name="user_answers", blank=True, null=True)
-    text = models.TextField("Текст", default='')
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
+        verbose_name="Пользователь",
+        related_name="user",
+    )
+    anonymous = models.PositiveIntegerField(
+        "ID анонимного пользователя", blank=True, null=True
+    )
+    answer = models.ForeignKey(
+        Answer,
+        on_delete=models.CASCADE,
+        verbose_name="Ответ",
+        related_name="user_answers",
+        blank=True,
+        null=True,
+    )
+    text = models.TextField("Текст", default="")
 
     class Meta:
         verbose_name = "Ответ пользователя"

@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from content.models import Poll, Question, Answer, UserAnswer
+
+from content.models import Answer, Poll, Question, UserAnswer
 
 
 class ActivePollsSerializer(serializers.ModelSerializer):
@@ -55,4 +56,4 @@ class AnswerCRDSerializer(serializers.ModelSerializer):
 class UserAnswerCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserAnswer
-        fields = ("user", "answer", "anonymous")
+        fields = ("user", "answer", "anonymous", "text")
