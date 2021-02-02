@@ -1,0 +1,14 @@
+black
+Django==2.2.10
+django-cors-headers
+djangorestframework
+drf-yasg==1.17.1
+djoser==2.0
+flake8
+isort
+Pillow
+psycopg2-binary
+pytest-cov
+pytest-django
+pytest-xdist
+pytest
