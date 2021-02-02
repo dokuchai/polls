@@ -42,4 +42,11 @@ docker exec -it polls pytest -p no:warnings
 docker exec -it polls pytest -p no:warnings --cov=.
 ```
 
+## Документация по API
+
+Документация по API доступна по следующему URL после запуска контейнеров:
+
+```
+http://localhost:8000/swagger
+```
 
