@@ -36,12 +36,6 @@ docker exec -it polls python manage.py createsuperuser
 docker exec -it polls pytest -p no:warnings
 ```
 
-Также можем запустить тесты с проверкой покрытия кода:
-
-```
-docker exec -it polls pytest -p no:warnings --cov=.
-```
-
 ## Документация по API
 
 Документация по API доступна по следующему URL после запуска контейнеров:

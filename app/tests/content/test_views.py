@@ -51,6 +51,7 @@ def test_update_poll(api_client, add_admin_token, add_poll):
     response = api_client.patch(f"/polls/{poll.id}/", {"title": "Новый опрос"})
 
     assert response.status_code == 200
+    assert response.data["title"] == "Новый опрос"
 
 
 @pytest.mark.django_db
