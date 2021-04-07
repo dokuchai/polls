@@ -1,8 +1,8 @@
 version: '3.7'
 
 services:
-  app:
-    container_name: polls
+  polls_app:
+    container_name: polls_app
     build: ./app
     command: python manage.py runserver 0.0.0.0:8000
     env_file:
@@ -12,16 +12,16 @@ services:
     ports: 
       - 8000:8000  
     depends_on:
-      - db
+      - polls_db
 
-  db:
+  polls_db:
     restart: always
     container_name: polls_db
     image: postgres:12-alpine
     volumes:
       - ./app/data:/var/lib/postgresql/data/
     ports:
-      - 5431:5432
+      - 5432:5432
     environment:
       - POSTGRES_USER=localuser
       - POSTGRES_PASSWORD=123

@@ -19,13 +19,13 @@ docker-compose up -d --build
 Ждем, когда произойдет билд контейнеров, после чего:
 
 ```
-docker exec -it polls python manage.py migrate
+docker exec -it polls_app python manage.py migrate
 ```
 
 При необходимости доступа к административной панели сайта выполняем:
 
 ```
-docker exec -it polls python manage.py createsuperuser
+docker exec -it polls_app python manage.py createsuperuser
 ```
 
 ## Запуск тестов
@@ -33,7 +33,7 @@ docker exec -it polls python manage.py createsuperuser
 Запускаем тесты командой
 
 ```
-docker exec -it polls pytest -p no:warnings
+docker exec -it polls_app pytest -p no:warnings
 ```
 
 ## Документация по API
