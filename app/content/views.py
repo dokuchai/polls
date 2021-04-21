@@ -16,6 +16,7 @@ class ActivePollsView(ListAPIView):
     """Список активных опросов"""
 
     serializer_class = ActivePollsSerializer
+    print('hello')
     queryset = Poll.objects.filter(
         start__lte=datetime.now(), finish__gte=datetime.now()
     )
